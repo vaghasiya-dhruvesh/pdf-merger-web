@@ -99,12 +99,21 @@ export function PdfMerger() {
         pages.forEach((p) => merged.addPage(p));
         setMergeProgress(Math.round(((i + 1) / total) * 100));
       }
-      const blob = await merged.save();
-      const url = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+      // const blob = await merged.save();
+      // const url = URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+
+      // New fixed code:
+      const pdfBytes = await merged.save();
+      // We explicitly wrap it as a standard BlobPart to satisfy TypeScript
+      const blob = new Blob([pdfBytes as any], { type: "application/pdf" });
+      const url = URL.createObjectURL(blob);
+
       const a = document.createElement("a");
       a.href = url;
       a.download = DEFAULT_MERGED_NAME;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
       toast.success("PDFs merged and downloaded successfully.");
     } catch (err) {
