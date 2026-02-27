@@ -6,6 +6,8 @@ import { ThemeToggle } from "@/components/theme-toggle";
 export const metadata: Metadata = {
   title: "PDF Merger | Merge PDFs in your browser",
   description: "Privacy-focused PDF merger. All processing happens in your browser.",
+  manifest: "/manifest.webmanifest",
+  themeColor: "#4f46e5",
 };
 
 export default function RootLayout({
