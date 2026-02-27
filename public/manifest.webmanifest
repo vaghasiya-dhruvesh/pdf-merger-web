@@ -2,7 +2,7 @@
   "name": "File Merger (PDF / Word)",
   "short_name": "File Merger",
   "description": "Merge PDF and Word (.docx) files locally in your browser. No uploads.",
-  "start_url": "/",
+  "start_url": "https://file-merger-web-rho.vercel.app/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
